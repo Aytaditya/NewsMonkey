@@ -18,20 +18,24 @@ export class News extends Component {
         this.setState({articles:parsedData.articles,totalResult:parsedData.totalResults})
 
     }
-      handleClick=async()=>{
-        if(this.state.page +1>Math.ceil(this.state.totalResults/20)){
-
+    handleClick = async () => {
+        if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
+            // Do nothing if the next page exceeds the total number of pages
+        } else {
+            await this.setState({
+                page: this.state.page + 1,
+            });
+    
+            let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=d278d15191f94852bed6d0605907607f&page=${this.state.page}&pageSize=20`;
+    
+            let data = await fetch(url);
+            let parsedData = await data.json();
+            this.setState({
+                articles: parsedData.articles,
+            });
         }
-        else{
-        let url=`https://newsapi.org/v2/top-headlines?country=in&apiKey=d278d15191f94852bed6d0605907607f&page=${this.state.page+1}&pageSize=20`
-        let data= await fetch(url)
-        let parsedData=await data.json()
-        this.setState({
-            page:this.state.page+1,
-            articles:parsedData.articles
-        })
-    }
-    }
+    };
+    
     previousClick=async()=>{
         let url=`https://newsapi.org/v2/top-headlines?country=in&apiKey=d278d15191f94852bed6d0605907607f&page=${this.state.page-1}&pageSize=20`
         let data= await fetch(url)
@@ -57,7 +61,7 @@ export class News extends Component {
                 </div>
                 <div className="container d-flex justify-content-between">
                 <button type="button" onClick={this.previousClick} className="btn btn-danger" disabled={this.state.page<=1}>&larr; Previous</button>
-                <button type="button" className="btn btn-danger" onClick={this.handleClick} disabled={this.state.page +1>Math.ceil(this.state.totalResults/20)}>Next &rarr;</button>
+                <button type="button" className="btn btn-danger" onClick={this.handleClick} disabled={this.state.page+1>Math.ceil(this.state.totalResult/20)}>Next &rarr;</button>
                 </div>
 
 
