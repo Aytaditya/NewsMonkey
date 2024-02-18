@@ -76,14 +76,14 @@ export class News extends Component {
 
     render() {
         return (
-            <div className='container my-3'>
-                <h2 className="my-3">NewsMonkey-Today's Top Headlines</h2>
+            <div className='container'>
+                
                 {this.state.loading && <Spinner/>}
                 <div className="row">
                     {!(this.state.loading) && this.state.articles.map((element) => {
 
                         return <div className="col-md-4 my-3" key={element.url}>
-                            <Newsitem  title={element.title} description={element?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url} />
+                            <Newsitem  title={element.title} description={element?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}author={element.author} date={element.publishedAt} source={element.source.name}/>
                         </div>
                     })}
                 </div>
