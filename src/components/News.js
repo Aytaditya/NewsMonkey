@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Newsitem from './Newsitem'
 import Spinner from './Spinner';
 import PropTypes from 'prop-types'
+import './News.css';
 
 
 export class News extends Component {
@@ -12,15 +13,23 @@ export class News extends Component {
     static propTypes={
         country: PropTypes.string,
         pageSize: PropTypes.number
+    }
+     capitalFirst=(string)=>{
+        return string.charAt(0).toUpperCase()+string.slice(1);
 
     }
-    constructor() {
-        super();
+    //we have to make a function without using function keyword for class methods in react
+    
+
+    constructor(props) {
+        super(props);
         this.state = {
             articles: [],
             loading: false,
             page:1
         }
+        // document.title=`NewsMonkey Application-${this.capitalFirst(this.props.category)}`;
+        //simplyuse props for the title inside the constructor to change the title 
     }
      async componentDidMount(){
         //it will run after everything is rendered
@@ -77,6 +86,7 @@ export class News extends Component {
     render() {
         return (
             <div className='container'>
+                <h2 className="my-4 text-center">NewsMonkey-today's Top Headlines from-{this.capitalFirst(this.props.category)}</h2>
                 
                 {this.state.loading && <Spinner/>}
                 <div className="row">

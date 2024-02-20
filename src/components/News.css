@@ -1,0 +1,7 @@
+h2{
+    background: linear-gradient(90deg,blue,rgb(206, 41, 68));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}

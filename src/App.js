@@ -10,9 +10,6 @@ export default class App extends Component {
       <div>
         <Router>
           <Navbar />
-          <div className="my-3 container">
-          <h2 className="my-4 text-center">NewsMonkey-today's Top Headlines</h2>
-          </div>
           <Routes>
           <Route path="/" element={<News pageSize={9} country="in" category="general" />} />
           <Route path='/business' element={<News pageSize={9} country='in' category='business' />} />
