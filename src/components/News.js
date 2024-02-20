@@ -32,6 +32,7 @@ export class News extends Component {
         //simplyuse props for the title inside the constructor to change the title 
     }
      async componentDidMount(){
+        this.props.setProgress(10);
         //it will run after everything is rendered
         let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d278d15191f94852bed6d0605907607f&page=1&pageSize=${this.props.pageSize}`
         this.setState({
@@ -45,6 +46,7 @@ export class News extends Component {
             totalResult:parsedData.totalResults,
             loading:false
         })
+        this.props.setProgress(100);
 
     }
     handleClick = async () => {
