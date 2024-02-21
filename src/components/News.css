@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Tilt+Neon&display=swap');
 h2{
-    background: linear-gradient(90deg,blue,rgb(206, 41, 68));
+    background: linear-gradient(90deg,black,red,black,rgb(241, 71, 99));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: "Anta", sans-serif;
+    
 
 }

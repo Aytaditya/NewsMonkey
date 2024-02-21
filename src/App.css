@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Tilt+Neon&display=swap');
  nav{
     background-color: rgb(0, 0, 0);
     height: 65px;
+    font-family: "Tilt Neon", sans-serif;
 } 
 body {
     padding-top: 56px; 

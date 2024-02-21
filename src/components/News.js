@@ -8,11 +8,14 @@ import './News.css';
 export class News extends Component {
     static defaultProps={
         country:'in',
-        pageSize:8
+        pageSize:8,
+        category: 'general'
+
     }
     static propTypes={
         country: PropTypes.string,
-        pageSize: PropTypes.number
+        pageSize: PropTypes.number,
+        category: PropTypes.string
     }
      capitalFirst=(string)=>{
         return string.charAt(0).toUpperCase()+string.slice(1);
@@ -34,7 +37,8 @@ export class News extends Component {
      async componentDidMount(){
         this.props.setProgress(10);
         //it will run after everything is rendered
-        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d278d15191f94852bed6d0605907607f&page=1&pageSize=${this.props.pageSize}`
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`
+
         this.setState({
             loading:true
             //setting loading true and making spinner spin till data comes hence setting state before parsedData
@@ -52,7 +56,7 @@ export class News extends Component {
     handleClick = async () => {
         if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
             
-            let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d278d15191f94852bed6d0605907607f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+            let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
             this.setState({
                 loading:true
                 //setting loading true and making spinner spin till data comes hence setting state before parsedData
@@ -70,7 +74,7 @@ export class News extends Component {
     }
     
     previousClick=async()=>{
-        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d278d15191f94852bed6d0605907607f&page=${this.state.page-1}&pageSize=${this.props.pageSize}`
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page-1}&pageSize=${this.props.pageSize}`
         this.setState({
             loading:true
             //setting loading true and making spinner spin till data comes hence setting state before parsedData
